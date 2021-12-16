@@ -1,18 +1,53 @@
 import 'package:flutter/material.dart';
+
 void main() {
   runApp(MaterialApp(
     title: "listview",
     home: Scaffold(
       appBar: AppBar(
-        title:Text(
-         "listview",
-        ) ,
+        title: Text(
+          "listview",
+        ),
       ),
       body: MyApp(),
     ),
   ));
 }
 
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  List<int> list = List();
+  @override
+  void initState() {
+    for (int i = 1; i <= 50; i++) {
+      list.add(i);
+    }
+  }
+
+  Widget build(BuildContext context) {
+    return ListView.builder(
+     itemCount: list.length,
+     itemBuilder:(BuildContext cnx, int index) {
+       return  ListTile(
+          title: Text("item no ${list[index]}"),
+          leading: Container(
+            height: 25,
+            width: 25,
+            decoration: 
+              BoxDecoration(shape:BoxShape.circle,color:Colors.pink),
+          ),
+          trailing:Icon(Icons.arrow_forward),
+        );
+     } 
+    );
+  }
+}
+
+/*
 class MyApp extends StatefulWidget {
   @override
   State<MyApp> createState() => _MyAppState();
@@ -58,3 +93,4 @@ class _MyAppState extends State<MyApp> {
     );
   }
 }
+*/
